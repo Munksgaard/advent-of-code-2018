@@ -51,8 +51,7 @@ fun isItThere arr lookingFor at =
              (enumerate lookingFor)
 
 fun newRecipies lookingFor arr numRecipies elf1 elf2 =
-    let (* val () = printState arr numRecipies elf1 elf2 *)
-        val x1 = Array.sub (arr, elf1)
+    let val x1 = Array.sub (arr, elf1)
         val x2 = Array.sub (arr, elf2)
         val ds = digits (x1 + x2)
         val () = app (fn (i, d) => Array.update (arr, numRecipies + i, d))
@@ -81,3 +80,8 @@ fun solve s =
     let val arr = initArr 100000000
         val ds = map (valOf o Int.fromString) (map (implode o (fn x => [x])) (explode s))
     in newRecipies ds arr 2 0 1 end
+
+val () =
+    let val input = TextIO.inputAll (TextIO.stdIn)
+    in println (Int.toString (#1 (solve input)))
+    end;

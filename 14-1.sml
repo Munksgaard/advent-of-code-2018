@@ -71,8 +71,7 @@ fun solve n =
     let val arr = initArr n
     in newRecipies n arr 2 0 1 end
 
-(* val () = *)
-(*     let val input = TextIO.inputAll (TextIO.stdIn) *)
-(*         val (i, j, _, _) = solve input *)
-(*     in println (Int.toString j ^ "," ^ Int.toString i) *)
-(*     end; *)
+val () =
+    let val input = valOf (Int.fromString (TextIO.inputAll (TextIO.stdIn)))
+    in println (String.concat (map Int.toString (#1 (solve input))))
+    end;
